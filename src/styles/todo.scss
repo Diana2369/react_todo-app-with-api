@@ -1,12 +1,14 @@
 .todo {
   position: relative;
+
   display: grid;
   grid-template-columns: 45px 1fr;
   justify-items: stretch;
 
+  border-bottom: 1px solid #ededed;
+
   font-size: 24px;
   line-height: 1.4em;
-  border-bottom: 1px solid #ededed;
 
   &:last-child {
     border-bottom: 0;
@@ -14,13 +16,13 @@
 
   &__status-label {
     cursor: pointer;
-    background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E");
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: center left;
   }
 
   &.completed &__status-label {
-    background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E");
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
   }
 
   &__status {
@@ -39,23 +41,27 @@
   }
 
   &__remove {
+    cursor: pointer;
+
     position: absolute;
     top: 0;
     right: 12px;
     bottom: 0;
+    transform: translateY(-2px);
 
     float: right;
-    font-size: 120%;
-    line-height: 1;
-    font-family: inherit;
-    font-weight: inherit;
-    color: #cc9a9a;
 
     border: 0;
-    background: none;
-    cursor: pointer;
-    transform: translateY(-2px);
+
+    font-family: inherit;
+    font-size: 120%;
+    font-weight: inherit;
+    line-height: 1;
+    color: #cc9a9a;
+
     opacity: 0;
+    background: none;
+
     transition: color 0.2s ease-out;
 
     &:hover {
@@ -70,6 +76,7 @@
   &__title-field {
     width: 100%;
     padding: 11px 14px;
+    border: 1px solid #999;
 
     font-family: inherit;
     font-size: inherit;
@@ -77,12 +84,11 @@
     line-height: inherit;
     color: inherit;
 
-    border: 1px solid #999;
     box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 
     &::placeholder {
-      font-style: italic;
       font-weight: 300;
+      font-style: italic;
       color: #e6e6e6;
     }
   }
@@ -90,9 +96,11 @@
   .overlay {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
+
     height: 58px;
+
     opacity: 0.5;
   }
 }
@@ -122,8 +130,11 @@
 
 .temp-item-exit-active {
   transform: translateY(-58px);
+
   max-height: 0;
+
   opacity: 0;
+
   transition: 0.3s ease-in-out;
   transition-property: opacity, max-height, transform;
 }
@@ -135,45 +146,48 @@
 
 .todo__loader {
   position: absolute;
-  inset: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
   z-index: 10;
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(255, 255, 255, 0.6);
 
   &.is-active {
     display: flex;
   }
 }
 
-
 .todoapp__toggle-all {
+  cursor: pointer;
 
-      position: absolute;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: #e6e6e6;
-
-    cursor: pointer;
-
+  position: absolute;
   top: -55px;
-  left: 0px;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 60px;
   height: 40px;
+
+  font-size: 24px;
+  color: #e6e6e6;
+
   appearance: none;
 
   & + label {
+    cursor: pointer;
+
+    display: block;
+
+    padding: 10px 27px;
+
     font-size: 22px;
     color: #e6e6e6;
-    padding: 10px 27px;
-;
-    display: block;
-    cursor: pointer;
   }
 
   &:checked + label {
@@ -182,21 +196,20 @@
 }
 
 .todo__loader-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   pointer-events: all;
 
-  display: none;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  z-index: 1000;
+  inset: 0;
 
-  background-color: rgba(255, 255, 255, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+
   font-size: 24px;
   font-weight: bold;
-  z-index: 1000;
+
+  background-color: rgba(255, 255, 255, 0.6);
 
   &.is-active {
     display: flex;
