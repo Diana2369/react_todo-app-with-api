@@ -149,17 +149,23 @@
 
 
 .todoapp__toggle-all {
-  position: absolute;
+
+      position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #e6e6e6;
+
+    cursor: pointer;
+
   top: -55px;
-  left: -12px;
+  left: 0px;
 
   width: 60px;
-  height: 34px;
-  transform: rotate(90deg);
+  height: 40px;
   appearance: none;
-  background: none;
-  border: none;
-  outline: none;
 
   & + label {
     font-size: 22px;
@@ -172,5 +178,27 @@
 
   &:checked + label {
     color: #737373;
+  }
+}
+
+.todo__loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: all;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 1000;
+
+  &.is-active {
+    display: flex;
   }
 }

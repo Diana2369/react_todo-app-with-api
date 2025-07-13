@@ -44,9 +44,6 @@ export const TodoList: React.FC<Props> = ({
             checked={allCompleted}
             onChange={onToggleAll}
           />
-          <label htmlFor="toggle-all" aria-label="Toggle all todos">
-            ❯
-          </label>
         </>
       )}
 
